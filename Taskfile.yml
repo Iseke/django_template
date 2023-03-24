@@ -1,0 +1,16 @@
+# https://taskfile.dev
+
+version: '3'
+
+dotenv: 
+  - 'tasks/.env'
+
+includes:
+  compose: ./tasks/ComposeTask.yml
+  docker: ./tasks/DockerTask.yml
+  local: ./tasks/LocalTask.yml
+
+tasks:
+  default:
+    cmds:
+      - clear

@@ -1,0 +1,21 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  build:
+    cmds:
+      - docker-compose $DOCKERCOMPOSE build
+  up:
+    cmds:
+      - docker-compose $DOCKERCOMPOSE up
+  stop:
+    cmds:
+      - docker-compose $DOCKERCOMPOSE stop
+  down:
+    cmds:
+      - docker-compose $DOCKERCOMPOSE down
+  run:
+    cmds:
+      - task: build
+      - task: up

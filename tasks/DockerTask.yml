@@ -1,0 +1,19 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GIT_COMMIT:
+    sh: git log -n 1 --format=%h
+
+tasks:
+  build:
+    cmds:
+      - docker build --build-arg DJANGO_ENV=$DJANGO_ENV -t $REGISTRY/$REPOSITORY:{{.GIT_COMMIT}} . -f $DOCKERPATH
+  push:
+    cmds:
+      - docker push $REGISTRY/$REPOSITORY:{{.GIT_COMMIT}}
+  upgrade:
+    cmds:
+      - task: build
+      - task: push

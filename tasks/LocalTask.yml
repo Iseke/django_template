@@ -1,0 +1,18 @@
+# https://taskfile.dev
+
+version: '3'
+
+env:
+  LOCAL_PATH: application/
+
+tasks:
+  shell:
+    cmds:
+      - poetry shell
+  run:
+    cmds:
+      - python $LOCAL_PATH/manage.py runserver
+  clean:
+    cmds:
+      - find $LOCAL_PATH -path "*/migrations/*.py" -not -name "__init__.py" -delete
+      - find $LOCAL_PATH -path "*/migrations/*.pyc"  -delete
