@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: application-storage-config
-data:
-  AWS_LOCATION: application
-  AWS_S3_ENDPOINT_URL: https://fra1.digitaloceanspaces.com
-  AWS_STORAGE_BUCKET_NAME: application-bucket
