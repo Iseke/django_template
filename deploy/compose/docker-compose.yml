@@ -7,7 +7,7 @@ services:
       context: ../..
       dockerfile: docker/Dockerfile
       args:
-        DJANGO_ENV: production
+        DJANGO_ENV: development
     command: gunicorn sgi.wsgi:application --bind 0.0.0.0:8000
     ports:
       - 8000:8000

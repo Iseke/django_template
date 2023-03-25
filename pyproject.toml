@@ -2,22 +2,25 @@
 name = "django_template"
 version = "0.1.0"
 description = ""
-authors = ["Almas Baktubayev <a.baktubayev@gmail.com>"]
+authors = ["Islam Abdukarimov <islamabdukarimov99@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "3.9.2"
+python = "3.9.15"
 boto3 = "^1.17.30"
 Pillow = "^8.1.2"
 gunicorn = "^20.0.4"
 Django = "^3.1.7"
-django-axes = "^5.13.1"
 django-health-check = "^3.16.3"
 django-split-settings = "^1.0.1"
 django-linear-migrations = "^1.5.1"
 django-storages = "^1.11.1"
 structlog = "^21.1.0"
 colorama = "^0.4.4"
+djangorestframework-simplejwt = "^5.2.2"
+djangorestframework = "^3.14.0"
+django-cors-headers = "^3.14.0"
+django-filter = "^22.1"
 
 [tool.poetry.dev-dependencies]
 django-migration-linter = "^2.5.1"

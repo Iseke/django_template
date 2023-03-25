@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import sys
+import os
 import logging
 
 logger = logging.getLogger(__name__)
@@ -27,7 +28,10 @@ PROJECT_TEMPLATES = [
     PROJECT_ROOT / 'templates'
 ]
 
-sys.path.append(PROJECT_ROOT / 'apps')
+sys.path.append(str(PROJECT_ROOT / 'apps'))
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('SECRET_KEY',
+                       '*s0ob#g8@xlr7)*xnnupt11+v^&78ynl5n@he!r0_sdiw+qzrdw=083sphb4&3h#9kj5hc*ji8kbwn)n0)+e')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -45,15 +49,15 @@ DEFAULT_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # extra
-    'axes',
 
     'health_check',
     'health_check.db',
     'health_check.cache',
     'health_check.storage',
     'health_check.contrib.migrations',
-    
+    "corsheaders",
     'django_linear_migrations',
+    'django_filters',
     'storages',
 ]
 
@@ -62,12 +66,12 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'config.middleware.ActivityMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # axes
-    'axes.middleware.AxesMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -110,6 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'axes.backends.AxesBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
+AUTH_USER_MODEL = "users.User"

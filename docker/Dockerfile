@@ -1,10 +1,10 @@
-ARG PYTHON_VERSION=3.9.2
+ARG PYTHON_VERSION=3.9.15
 
 ### POETRY
 
 FROM python:$PYTHON_VERSION-alpine as poetry
 
-ENV POETRY_VERSION=1.1.5
+ENV POETRY_VERSION=1.4.1
 
 RUN apk update && \
     apk add --no-cache gcc cargo && \

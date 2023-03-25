@@ -18,13 +18,22 @@ from django.conf import settings
 from django.urls import path, include
 
 # Register your views here.
+v1patterns = [
+    path("users/", include("users.api.v1.urls")),
+    path("posts/", include("posts.api.v1.urls")),
+]
+
+apipatterns = [
+    path("v1/", include(v1patterns)),
+]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('health/', include('health_check.urls')),
     # local path
     path('', include('config.core.urls')),
-    path('', include('apps.urls')),
+    # api
+    path("api/", include(apipatterns)),
 ]
 
 if settings.DEBUG:
